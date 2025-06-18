@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notify - One Click Notification</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    
+    <script src="script.js" defer></script>
+    
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Notify</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" target="_blank" style="text-decoration: none; color: inherit;">Home</a></li>
+                    <li><a href="courses.html"  target="_blank" style="text-decoration: none; color: inherit;">Courses</a></li>
+                    <li><a href="loginpage.html"  target="_blank" style="text-decoration: none; color: inherit;">Login/Signup</a></li>
+                    <li><a href="contact.html"  target="_blank" style="text-decoration: none; color: inherit;">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- Main Content Section with Background Image -->
+    <section class="main-section">
+        <img src="image.png" alt="Background Image" class="background-image">
+        <div class="filter-section">
+            <div class="background-text">
+                <h1>Find Your Dream Job</h1>
+            </div>
+
+            <div class="container" id="search-container">
+                <form id="internship-form">
+                    <div class="search-container">
+                        <input type="text" placeholder="Keyword" id="job-title" required>
+                        <select id="category">
+                            <option value="" disabled selected>Category</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="data-science">Data Science</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="design">Design</option>
+                        </select>
+                        <select id="location">
+                            <option value="" disabled selected>Location</option>
+                            <option value="remote">Remote</option>
+                            <option value="onsite">Onsite</option>
+                        </select>
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+                </form>
+                <div class="spinner" id="loading-spinner" style="display: none;"></div>
+                <div id="job-listings" style="display: none;"></div> <!-- Job Listings Display Section -->
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    <!-- Categories Section -->
+    <section class="categories-section py-5 text-center">
+        <div class="container">
+            <h2 class="mb-4">Explore By Category</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="interview-tips.html"  target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="category-box">
+                            <i class="fas fa-comments"></i>
+                            <h3>Interview Tips</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="interviewexp.html"  target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="category-box">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>Interview Experience</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="http://localhost:3000/cv-builder"  target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="category-box">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Create Resume</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="ats score.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="category-box">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>ATS Resume Checker</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Jobs Section -->
+    <section class="latest-jobs-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest Jobs</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="job-card p-4 shadow-sm">
+                        <h5>Software Engineer</h5>
+                        <p><strong>Company:</strong> TechCom</p>
+                        <p><strong>Location:</strong> New York, USA</p>
+                        <p><strong>Salary:</strong> $123 - $456</p>
+                        <p><strong>Type:</strong> Full Time</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="job-card p-4 shadow-sm">
+                        <h5>Marketing Manager</h5>
+                        <p><strong>Company:</strong> International Marketing</p>
+                        <p><strong>Location:</strong> New York, USA</p>
+                        <p><strong>Salary:</strong> $123 - $456</p>
+                        <p><strong>Type:</strong> Full Time</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="job-card p-4 shadow-sm">
+                        <h5>Product Designer</h5>
+                        <p><strong>Company:</strong> DataExchange</p>
+                        <p><strong>Location:</strong> New York, USA</p>
+                        <p><strong>Salary:</strong> $123 - $456</p>
+                        <p><strong>Type:</strong> Full Time</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="job-card p-4 shadow-sm">
+                        <h5>Creative Director</h5>
+                        <p><strong>Company:</strong> Fuzion</p>
+                        <p><strong>Location:</strong> New York, USA</p>
+                        <p><strong>Salary:</strong> $123 - $456</p>
+                        <p><strong>Type:</strong> Full Time</p>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="browse-more-jobs">Browse More Jobs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2 class="h5">Company</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3">
+                    <h2 class="h5">Quick Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3">
+                    <h2 class="h5">Contact</h2>
+                    <p>123 Street, New York, USA</p>
+                    <p>+012 345 67890</p>
+                    <p>info@example.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <h2 class="h5">Newsletter</h2>
+                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <form class="form-inline">
+                        <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Your email" required>
+                        <button class="newsletter-button">Sign Up</button>
+
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-4 pt-4 border-top border-light">
+                <div class="d-flex justify-content-between align-items-center footer-links">
+                    <p>&copy; <a href="#">Your Site Name</a>, All Rights Reserved. Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    <div class="mt-2">
+                        <a href="#" class="mr-4">Home</a>
+                        <a href="#" class="mr-4">Cookies</a>
+                        <a href="#" class="mr-4">Help</a>
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+        // Handle form submission and redirect to job listings view
+        document.getElementById('internship-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const jobTitle = document.getElementById('job-title').value;
+            const location = document.getElementById('location').value;
+
+            // Save search parameters to localStorage
+            localStorage.setItem('jobTitle', jobTitle);
+            localStorage.setItem('location', location);
+
+            // Redirect to job listings view (in the same page)
+            displayJobListingsView(jobTitle, location);
+        });
+
+        // Function to display the job listings view on the same page
+        function displayJobListingsView(jobTitle, location) {
+            document.querySelector('.main-section').innerHTML = `
+                <header>
+                    <h1>Job Listings for "${jobTitle}" in "${location}"</h1>
+                </header>
+                <div class="job-listings-container" id="job-listings-container">
+                    <div class="spinner" id="loading-spinner" style="display: none;"></div>
+                    <div id="job-listings"></div>
+                </div>
+            `;
+            document.getElementById('loading-spinner').style.display = 'block';
+
+            fetchJobListings(jobTitle, location);
+        }
+
+        // Fetch job listings from the API
+        async function fetchJobListings(jobTitle, location) {
+            const options = {
+                method: 'GET',
+                url: 'https://jsearch.p.rapidapi.com/estimated-salary',
+                params: {
+                    job_title: jobTitle,
+                    location: location,
+                    radius: '100'
+                },
+                headers: {
+                    'x-rapidapi-key': 'caaeae0559msh355386f6b64694ep1f2ed0jsncaaf5976b1e7', // Replace with your API key
+                    'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await axios.request(options);
+                displayJobListings(response.data.data);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('job-listings').innerHTML = '<p>Error fetching job listings. Please try again.</p>';
+            } finally {
+                document.getElementById('loading-spinner').style.display = 'none';
+            }
+        }
+
+        // Display job listings on the page
+        function displayJobListings(jobs) {
+            const jobListDiv = document.getElementById('job-listings');
+
+            if (jobs.length === 0) {
+                jobListDiv.innerHTML = '<p>No job listings found.</p>';
+                return;
+            }
+
+            jobs.forEach(job => {
+                const jobItem = document.createElement('div');
+                jobItem.className = 'job-item';
+                jobItem.innerHTML = `
+                    <h3>${job.job_title}</h3>
+                    <p><strong>Location:</strong> ${job.location}</p>
+                    <p><strong>Salary:</strong> $${job.estimated_salary} ${job.salary_currency} (YEAR)</p>
+                    <p><strong></strong> <a href="${job.publisher_link}" target="_blank" class="apply-button">Apply</a></p>
+                `;
+                jobListDiv.appendChild(jobItem);
+            });
+        }
+
+
+
+    const tips = [
+            { title: 'Prepare for Common Interview Questions', 
+              imageUrl: 'img/i1.png', 
+              pageUrl: 'tip1.html' },
+            
+        ];
+
+        function loadTips() {
+            const tipsContainer = document.getElementById('tips-container');
+            tips.forEach(tip => {
+                const tipCard = document.createElement('div');
+                tipCard.className = 'tip-card';
+                tipCard.innerHTML = `
+                    <a href="${tip.pageUrl}" class="tip-link">
+                        <img src="${tip.imageUrl}" alt="${tip.title}">
+                        <h3>${tip.title}</h3>
+                    </a>
+                `;
+                tipsContainer.appendChild(tipCard);
+            });
+        }
+
+        window.onload = loadTips;
+    </script>
+    
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

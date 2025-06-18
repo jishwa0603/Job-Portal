@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notify</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notify - One Click Notification</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="contactform.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #E1F4F3, #FFFFFF);
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s;
+            flex-direction: column; /* Align items in a column */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            text-align: center; /* Center title */
+            font-size: 2em; /* Responsive font size */
+        }
+
+        .drop-area {
+            border: 2px dashed #9ca3af;
+            border-radius: 8px;
+            padding: 40px; /* Increased padding for a bigger drop area */
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s;
+            margin-bottom: 20px;
+            width: 90%; /* Full width */
+            text-align: center;
+            min-height: 200px; /* Minimum height for the drop area */
+        }
+
+        .drop-area:hover {
+            background: #f3f4f6;
+            border-color: #60a5fa;
+        }
+
+        .drop-area.active {
+            background: #e0f2fe;
+            border-color: #3b82f6;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        button {
+            background-color: #00ADB5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 15px 20px; /* Increased padding */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            font-size: 1.2em; /* Increased font size */
+        }
+
+        button:hover {
+            background-color: #00ADB5;
+        }
+
+        textarea {
+            width: 90%; /* Full width */
+            height: 250px; /* Increased height */
+            border: 1px solid #9ca3af;
+            border-radius: 4px;
+            padding: 10px;
+            resize: none;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+            font-size: 1em; /* Responsive font size */
+        }
+
+        textarea:focus {
+            border-color: #10b981;
+            outline: none;
+        }
+
+        #file-info {
+            color: #10b981; /* Highlighting the "Selected file:" */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .ats-score {
+            font-size: 2em; /* Bigger size, responsive */
+            color: #333333; /* Score color */
+            margin-top: 20px;
+            text-align: center; /* Center text */
+        }
+
+        .tips {
+            margin-top: 20px;
+            text-align: left; /* Align tips to the left */
+            color: #4b5563;
+            font-size: 1em; /* Consistent font size for tips */
+            max-width: 90%; /* Full width */
+        }
+
+        ul {
+            list-style-type: disc; /* Bullet points for tips */
+            padding-left: 20px; /* Indentation for bullets */
+            margin: 0; /* Remove default margin */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em; /* Smaller font size for smaller screens */
+            }
+
+            .ats-score {
+                font-size: 1.5em; /* Smaller score size */
+            }
+
+            button {
+                padding: 10px; /* Reduce button padding */
+            }
+
+            textarea {
+                height: 200px; /* Reduce height for smaller screens */
+            }
+        }
+
+
+
+
+
+
+
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #E1F4F3, #FFFFFF);
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s;
+            flex-direction: column; /* Align items in a column */
+            padding-top: 80px; /* Add space at the top to account for the fixed header */
+        }
+
+        header {
+            background-color: #333333;
+            padding: 10px 40px;
+            width: 100%; /* Full width */
+            position: fixed; /* Fix it to the top */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure it's always above other elements */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+        }
+
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end; /* Align links to the right */
+            width: 100%;
+        }
+
+        header .logo {
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: bold;
+            justify-content: center;
+            margin-right: auto; /* Push the logo to the left */
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px;
+        }
+
+        .nav-links li a:hover {
+            color: #60a5fa; /* Change text color on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            .nav-links li {
+                margin: 0 5px;
+            }
+        }
+
+
+
+
+
+
+       
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Notify</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" target="_blank" style="text-decoration: none; color: inherit;">Home</a></li>
+                    <li><a href="courses.html"  target="_blank" style="text-decoration: none; color: inherit;">Courses</a></li>
+                    <li><a href="loginpage.html"  target="_blank" style="text-decoration: none; color: inherit;">Login/Signup</a></li>
+                    <li><a href="contact.html"  target="_blank" style="text-decoration: none; color: inherit;">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <h1>ATS Resume Checker</h1>
+    <p>A free and fast AI resume checker doing 16 crucial checks to ensure your resume is ready to perform.</p>
+    
+    <div class="drop-area" id="drop-area">
+        <p>Drop your resume here or click to upload.</p>
+        <input type="file" id="resume-upload" accept=".pdf,.docx"/>
+        <button id="upload-btn">Upload Your Resume</button>
+    </div>
+    
+    <textarea id="job-description" placeholder="Enter the job description here..."></textarea>
+    
+    <p id="file-info" style="margin-top: 10px;"></p>
+    
+    <button id="calculate-btn" class="hidden">Get ATS Score</button>
+
+    <div class="tips hidden" id="tips">
+        <h2>Tips to Improve Your Resume</h2>
+        <ul>
+            <li>Use clear and concise language to communicate your skills and experience effectively.</li>
+            <li>Tailor your resume to the job description by using relevant keywords and phrases that match the job posting.</li>
+            <li>Highlight your achievements with quantifiable metrics, such as percentages or numbers, to demonstrate your impact.</li>
+            <li>Keep the layout clean and professional, using consistent formatting for headings, bullet points, and fonts.</li>
+            <li>Ensure your contact information is easily accessible and up-to-date.</li>
+            <li>Use action verbs to describe your responsibilities and achievements, making your contributions stand out.</li>
+            <li>Limit your resume to one page if you're a recent graduate or have less than 10 years of experience.</li>
+            <li>Include relevant certifications and training that align with the job you're applying for.</li>
+            <li>Proofread your resume for spelling and grammar errors to present a polished image to employers.</li>
+            <li>Consider using a professional email address that includes your name rather than a nickname.</li>
+        </ul>
+        <p id="ats-score" class="ats-score hidden"></p> <!-- Updated class for ATS score -->
+    </div>
+
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('resume-upload');
+        const fileInfo = document.getElementById('file-info');
+        const tips = document.getElementById('tips');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const atsScoreDisplay = document.getElementById('ats-score');
+        const jobDescription = document.getElementById('job-description');
+
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', handleFileUpload);
+
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('active');
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('active');
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('active');
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleFileUpload({ target: { files: e.dataTransfer.files } });
+            }
+        });
+
+        document.getElementById('upload-btn').addEventListener('click', () => {
+            if (fileInput.files.length > 0) {
+                handleFileUpload({ target: { files: fileInput.files } });
+            } else {
+                alert('Please upload a resume file.');
+            }
+        });
+
+        calculateBtn.addEventListener('click', () => {
+            const atsScore = Math.floor(Math.random() * 101); // Mock ATS score between 0 and 100
+            atsScoreDisplay.textContent = `ATS Score: ${atsScore}/100`;
+            atsScoreDisplay.classList.remove('hidden');
+            tips.classList.remove('hidden'); // Show tips when ATS score is displayed
+        });
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                fileInfo.textContent = `Selected file: ${file.name}`;
+                calculateBtn.classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
