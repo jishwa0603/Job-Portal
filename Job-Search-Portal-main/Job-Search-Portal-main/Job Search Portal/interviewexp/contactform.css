@@ -1,0 +1,203 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #EEEEEE; /* Light Gray */
+}
+
+/* Header Section */
+header {
+    background-color: #222831; /* Dark Gray */
+    padding: 20px;
+    color: #EEEEEE; /* Light Gray */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    /* color: #00ADB5; Teal for logo */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #EEEEEE; /* Light Gray for navbar links */
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    color: #EEEEEE; /* Light Gray */
+    background-color: #00ADB5; /* Teal */
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #222831; /* Dark background */
+    color: #eeeeee; /* Light text color */
+    padding: 40px 0;
+}
+
+/* Section headings */
+footer h2.h5 {
+    color: #eeeeee;
+    margin-bottom: 20px;
+}
+
+/* Links */
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    color: #eeeeee;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #00adb5; /* Hover color */
+}
+
+/* Social icons */
+footer .social-icons {
+    margin-top: 15px;
+}
+
+footer .social-icons a {
+    color: #eeeeee;
+    margin-right: 10px;
+    font-size: 1.5em; /* Larger icon size */
+    transition: transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    color: #00adb5; /* Social icons hover color */
+}
+
+/* Sign Up button */
+.btn-signup {
+    background-color: #00adb5; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem; /* Visible text size */
+    margin-left: 10px; /* Spacing between input and button */
+}
+
+.btn-signup:hover {
+    background-color: #393e46; /* Hover background color */
+    transform: scale(1.05);
+}
+
+/* Align footer links */
+.footer-links {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #00adb5;
+}
+.newsletter-button {
+    background-color: #00ADB5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-button:hover {
+    background-color: #007f8a; /* Darker shade for hover effect */
+}
+
+
+
+/* job link jox in new page */
+.job-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(6, 6, 6, 0.1);
+    background-color: #00ADB5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+   
+}
+.job-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.job-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+.job-item .apply-button {
+    margin-top: 10px;
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.job-item .apply-button:hover {
+    background-color: #0056b3;
+}
+.job-listings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}

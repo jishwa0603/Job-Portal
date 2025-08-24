@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Posting Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <h1 style="text-align:center;" ">Post a Job</h1>
+    <div class="form-container">
+        <h1>Add a job</h1>
+        <p>You know what you are looking for. We help you find them.<br>
+        Post your open positions and hire fast the best talent.</p>
+
+        <form id="job-form">
+            <label for="company">Company *</label>
+            <input type="text" id="company" name="company" placeholder="Your company's name" required>
+
+            <label for="logo">Logo</label>
+            <div class="file-drop-area" id="logo-drop">
+                <span class="fake-btn">Drag files here to upload or <span class="browse-link">Browse</span></span>
+                <input type="file" id="logo" name="logo" class="file-input" required>
+            </div>
+
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" name="job-title" placeholder="Open position title" required>
+
+            <label for="job-description">Job Description</label>
+            <textarea id="job-description" name="job-description" placeholder="Tasks, requirements, benefits" rows="4" required></textarea>
+
+            <label for="contract-type">Type of Contract</label>
+            <select id="contract-type" name="contract-type">
+                <option>Contract</option>
+                <option>Full-time</option>
+                <option>Part-time</option>
+                <option>Internship</option>
+            </select>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="City">
+
+            <label for="working-language">Working Language</label>
+            <input type="text" id="working-language" name="working-language" placeholder="English, German, French">
+
+            <label for="category">Category of Job *</label>
+            <select id="category" name="category" required>
+                <option>Technology</option>
+                <option>Marketing</option>
+                <option>Customer Service</option>
+                <option>Human Resources</option>
+            </select>
+
+            <label for="link">Link to the Job</label>
+            <input type="url" id="link" name="link" placeholder="URL for more information">
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+            <label for="company-size">Company Size</label>
+            <select id="company-size" name="company-size">
+                <option>Small (1-50 employees)</option>
+                <option>Medium (51-500 employees)</option>
+                <option>Large (500+ employees)</option>
+            </select>
+
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry" placeholder="Your industry">
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
